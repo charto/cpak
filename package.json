@@ -1,0 +1,29 @@
+{
+  "name": "cpak",
+  "version": "0.0.1",
+  "description": "Compression codec for geometry",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "tsc": "tsc",
+    "prepublish": "tsc -p src",
+    "test": "tsc -p test && node test/test.js"
+  },
+  "author": "Juha Järvi",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/charto/cpak.git"
+  },
+  "bugs": {
+    "url": "https://github.com/charto/cpak/issues"
+  },
+  "homepage": "https://github.com/charto/cpak#readme",
+  "keywords": [
+    "compression"
+  ],
+  "devDependencies": {
+    "@types/node": "^8.0.29",
+    "typescript": "^2.5.3"
+  }
+}
