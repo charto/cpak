@@ -6,60 +6,56 @@
 
 export class Writer {
 
-	static small(data: number[]) {
-		let count = data.length;
+	small(num: number) { this.data += Writer.small(num); }
+
+	large(num: number) { this.data += Writer.large(num); }
+
+	static small(num: number) {
 		let ascii: number;
 		let digit: number;
-		let num: number;
 		let result = '';
 
-		while(count) {
-			num = data[--count];
-			digit = num % 64;
-			num = (num - digit) / 64;
+		digit = num % 64;
+		num = (num - digit) / 64;
 
-			ascii = digit + (((digit + 1934) * 9) >> 9);
-			result = String.fromCharCode(ascii) + result;
+		ascii = digit + (((digit + 1934) * 9) >> 9);
+		result = String.fromCharCode(ascii) + result;
 
-			while(num) {
-				digit = num % 28;
-				num = (num - digit) / 28;
-
-				digit += 64;
-				ascii = digit + (((digit + 1934) * 9) >> 9);
-				result = String.fromCharCode(ascii) + result;
-			}
-		}
-
-		return(result);
-	}
-
-	static large(data: number[]) {
-		let count = data.length;
-		let ascii: number;
-		let digit: number;
-		let num: number;
-		let result = '';
-
-		while(count) {
-			num = data[--count];
+		while(num) {
 			digit = num % 28;
 			num = (num - digit) / 28;
 
 			digit += 64;
 			ascii = digit + (((digit + 1934) * 9) >> 9);
 			result = String.fromCharCode(ascii) + result;
-
-			while(num) {
-				digit = num % 64;
-				num = (num - digit) / 64;
-
-				ascii = digit + (((digit + 1934) * 9) >> 9);
-				result = String.fromCharCode(ascii) + result;
-			}
 		}
 
 		return(result);
 	}
+
+	static large(num: number) {
+		let ascii: number;
+		let digit: number;
+		let result = '';
+
+		digit = num % 28;
+		num = (num - digit) / 28;
+
+		digit += 64;
+		ascii = digit + (((digit + 1934) * 9) >> 9);
+		result = String.fromCharCode(ascii) + result;
+
+		while(num) {
+			digit = num % 64;
+			num = (num - digit) / 64;
+
+			ascii = digit + (((digit + 1934) * 9) >> 9);
+			result = String.fromCharCode(ascii) + result;
+		}
+
+		return(result);
+	}
+
+	data = '';
 
 }
