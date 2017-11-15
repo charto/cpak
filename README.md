@@ -67,6 +67,25 @@ Level 1
 Encoding is similar to WKB (Well-Known Binary) with endianness flags omitted
 and all integers stored in a variable-length format.
 
+Geometry type IDs are multiplied by 2 compared to WKB. This allows the least
+significant bit to indicate spec level.
+
+- 0 means level 1.
+- 1 means level 2 (or higher).
+
+Floating point values need to be rounded to integers before encoding.
+Multiplying them by some factor first allows keeping fractional digits
+up to a desired precision. Powers of 2 and 10 both have their advantages
+when choosing a multiplication factor:
+
+- Base 2 allows easy further lossless conversion to WKB or shapefiles and back.
+- Base 10 allows easy further lossless conversion to WKT or GeoJSON and back.
+
+The same multiplication factor must be used when reading and writing,
+and level 1 leaves it to the application to guarantee this. Embedding
+cpak-encoded geometry into JSON is the recommended way to allow storing
+additional metadata.
+
 License
 =======
 
