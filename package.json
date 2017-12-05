@@ -1,6 +1,6 @@
 {
   "name": "cpak",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Compression codec for geometry",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -23,7 +23,7 @@
     "compression"
   ],
   "devDependencies": {
-    "@types/node": "^8.0.50",
-    "typescript": "^2.6.1"
+    "@types/node": "^8.0.54",
+    "typescript": "^2.6.2"
   }
 }
